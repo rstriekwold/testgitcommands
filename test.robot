@@ -7,8 +7,9 @@ Library                QWeb
 Library    DateTime
 Library    OperatingSystem
 Library    CopadoAI
-Suite Setup            Open Browser                about:blank                chrome     #prefs="autocomplete":off
+Suite Setup    Setup Browser            
 Suite Teardown         Close All Browsers
+Test Setup    Log git version
 
 
 *** Test Cases ***
@@ -19,8 +20,7 @@ Test the home page
     Log to console               ${CURDIR}
     GoTo             https://qentinelqi.github.io/shop/
     VerifyText        Find your spirit animal             recognition_mode=vision
-   ${test}=            Prompt            give me the time
-   Log To Console       ${test}
+
 
 
 Check the navigation menu items
@@ -31,8 +31,11 @@ Check the navigation menu items
     VerifyText         Our Story
     VerifyText         Contact
 
-
-
 *** Keywords ***
 Log git version
-    Run                         git -C /home/executor/execution/AAAA GITCOMMANDS log -1
+    Run                         git log --pretty\="%H - %cd" -n 1
+    Log  Git Version: ${git_version}  console=True
+
+Setup Browser
+    Open Browser                about:blank                chrome
+    Log git version
