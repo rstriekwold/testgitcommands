@@ -32,6 +32,7 @@ Check the navigation menu items
 
 *** Keywords ***
 Log git version
+    Run                         git init
     ${git_version}=    Run                         git log --pretty\="%H - %cd" -n 1
     Log                ${CURDIR}                   console=True
     Log                Git Version: ${git_version}                             console=True
