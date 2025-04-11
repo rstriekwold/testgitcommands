@@ -5,6 +5,7 @@ Documentation          Test suite for CRT starter.
 Library                QWeb
 # Library                QForce
 Library    DateTime
+Library    OperatingSystem
 Library    CopadoAI
 Suite Setup            Open Browser                about:blank                chrome     #prefs="autocomplete":off
 Suite Teardown         Close All Browsers
@@ -15,6 +16,7 @@ Suite Teardown         Close All Browsers
 Test the home page
     [Documentation]   Go to the web shop, and verify that the slogan text appears on the page.Go to the web shop, and verify that the slogan text appears on the page.      Go to the web shop, and verify that the slogan text appears on the page.Go to the web shop, and verify that the slogan text appears on the page.      Go to the web shop, and verify that the slogan text appears on the page.
     [Tags]            regression        smoketest         Prio1
+    Log to console               ${CURDIR}
     GoTo             https://qentinelqi.github.io/shop/
     VerifyText        Find your spirit animal             recognition_mode=vision
    ${test}=            Prompt            give me the time
@@ -28,3 +30,9 @@ Check the navigation menu items
     VerifyText         Products
     VerifyText         Our Story
     VerifyText         Contact
+
+
+
+*** Keywords ***
+Log git version
+    Run                         git -C /home/executor/execution/AAAA GITCOMMANDS log -1
