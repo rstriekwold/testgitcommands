@@ -19,7 +19,7 @@ Test the home page
     [Tags]             regression                  smoketest                   Prio1
     GoTo               https://qentinelqi.github.io/shop/
     VerifyText         Find your spirit animal     recognition_mode=vision
-    ${git_version}=    Run                         git log --pretty\="%H - %cd" -n 1 -p ${CURDIR}/../0000gitcommands
+    # ${git_version}=    Run                         git log --pretty\="%H - %cd" -n 1
     Log to console     ${CURDIR}
 
 Check the navigation menu items
