@@ -20,11 +20,13 @@ Test the home page
     VerifyText         Find your spirit animal     recognition_mode=vision
     # ${git_version}=    Run                         git log --pretty\="%H - %cd" -n 1
     Log to console     ${CURDIR}
+    Run                command=cd ${CURDIR}
     Log git version
 
 *** Keywords ***
 Log git version
-    ${git_version2}=    Run                         git log --pretty\="%H - %cd" -n 1
+    Run                command=cd ${CURDIR}
+    ${git_version2}=    Run                         git log --pretty\="%H - %cd" -n 1 -p ${CURDIR}
     Log                ${CURDIR}                   console=True
 
     Log                Git Version: ${git_version2}                             console=True    
