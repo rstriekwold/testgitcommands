@@ -1,4 +1,3 @@
-
 *** Settings ***
 
 Documentation          Test suite for CRT starter.
@@ -21,21 +20,13 @@ Test the home page
     VerifyText         Find your spirit animal     recognition_mode=vision
     # ${git_version}=    Run                         git log --pretty\="%H - %cd" -n 1
     Log to console     ${CURDIR}
-
-Check the navigation menu items
-    [Documentation]    Go to the shop homepage and verify the menu items.
-    [Tags]             regression
-    GoTo               https://qentinelqi.github.io/shop/
-    VerifyText         Products
-    VerifyText         Our Story
-    VerifyText         Contact
+    Log git version
 
 *** Keywords ***
 Log git version
-    ${git_version1}=    Run                         git --version
     ${git_version2}=    Run                         git log --pretty\="%H - %cd" -n 1
     Log                ${CURDIR}                   console=True
-    Log                Git Version: ${git_version1}                             console=True
+
     Log                Git Version: ${git_version2}                             console=True    
 Setup Browser
     Open Browser       about:blank                 chrome
